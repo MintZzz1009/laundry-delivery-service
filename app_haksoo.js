@@ -33,7 +33,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     console.log('app_haksoo의 app.get("/")');
-    res.status(200).send('review test를 위한 임시 서버');
+    // jwt 토큰 검사 -> login 값 변경
+    res.render('main', {
+        login: false,
+    });
+    // res.status(200).send('review test를 위한 임시 서버');
 });
 
 app.use(express.json());

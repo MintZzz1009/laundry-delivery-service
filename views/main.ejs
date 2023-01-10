@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- Fontawesome -->
+        <script
+            src="https://kit.fontawesome.com/ec13307674.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- ajax -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <title>Review-Post</title>
+
+        <!-- css -->
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body>
+        <header id="main__header">
+            <div class="header__column">
+                <i id="btn-menu" class="header-btn fa-solid fa-bars"></i>
+            </div>
+            <div class="header__column"><h1>세탁할 팔자</h1></div>
+            <div class="header__column"></div>
+        </header>
+        <div class="header__buttons toggled-off" id="toggle-box">
+            <% if (login) { %>
+            <button>로그인</button>
+            <button>회원가입</button>
+            <% } else { %>
+            <button>마이페이지</button>
+            <button>로그아웃</button>
+            <% } %>
+        </div>
+        <main id="main">
+            <section id="main-section">
+                <div id="windows-nav-wrapper">
+                    <div id="windows-nav">
+                        <div class="windows-nav__row">
+                            <div class="window-button-wrapper">
+                                <div id="apply" class="window-button"></div>
+                                <h2 class="window-button-title">
+                                    세탁서비스 신청
+                                </h2>
+                            </div>
+                            <div class="window-button-wrapper">
+                                <div
+                                    id="laundry-list"
+                                    class="window-button"
+                                ></div>
+                                <h2 class="window-button-title">
+                                    세탁 목록 조회
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="windows-nav__row">
+                            <div class="window-button-wrapper">
+                                <div
+                                    id="post-review"
+                                    class="window-button"
+                                ></div>
+                                <h2 class="window-button-title">리뷰 작성</h2>
+                            </div>
+                            <div class="window-button-wrapper">
+                                <div
+                                    id="get-review"
+                                    class="window-button"
+                                ></div>
+                                <h2 class="window-button-title">리뷰 조회</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+        <script src="/js/main.js"></script>
+    </body>
+</html>

@@ -8,7 +8,8 @@ goToBackBtn.addEventListener('click', backToGetUsersLaundryState);
 function backToGetUsersLaundryState() {
     const urlParams = new URL(location.href).searchParams;
     const userId = urlParams.get('userId');
-    window.location.href = `/${userId}/laundry`;
+    window.location.href = `/userId/laundry`;
+    // window.location.href = `/${userId}/laundry`;
 }
 
 // 추가 - 이미지 파일, 미리보기
