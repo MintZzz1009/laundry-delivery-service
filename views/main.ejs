@@ -7,16 +7,11 @@
 
         <!-- Bootstrap -->
         <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
             rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
             crossorigin="anonymous"
         />
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"
-        ></script>
 
         <!-- Fontawesome -->
         <script
@@ -30,37 +25,25 @@
         <title>Review-Post</title>
 
         <!-- css -->
-        <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" href="/css/style.css" />
     </head>
     <body>
-        <header id="main__header">
-            <div class="header__column">
-                <i id="btn-menu" class="header-btn fa-solid fa-bars"></i>
-            </div>
-            <div class="header__column"><h1>세탁할 팔자</h1></div>
-            <div class="header__column"></div>
-        </header>
-        <div class="header__buttons toggled-off" id="toggle-box">
-            <% if (login) { %>
-            <button>로그인</button>
-            <button>회원가입</button>
-            <% } else { %>
-            <button>마이페이지</button>
-            <button>로그아웃</button>
-            <% } %>
-        </div>
+        <%- include('header') %> <%- include('toggle-menu-bar') %>
         <main id="main">
             <section id="main-section">
                 <div id="windows-nav-wrapper">
                     <div id="windows-nav">
                         <div class="windows-nav__row">
-                            <div class="window-button-wrapper">
+                            <div id="apply-btn" class="window-button-wrapper">
                                 <div id="apply" class="window-button"></div>
                                 <h2 class="window-button-title">
                                     세탁서비스 신청
                                 </h2>
                             </div>
-                            <div class="window-button-wrapper">
+                            <div
+                                id="laundry-list-btn"
+                                class="window-button-wrapper"
+                            >
                                 <div
                                     id="laundry-list"
                                     class="window-button"
@@ -71,16 +54,22 @@
                             </div>
                         </div>
                         <div class="windows-nav__row">
-                            <div class="window-button-wrapper">
+                            <div
+                                id="post-review-btn"
+                                class="window-button-wrapper"
+                            >
                                 <div
                                     id="post-review"
                                     class="window-button"
                                 ></div>
                                 <h2 class="window-button-title">리뷰 작성</h2>
                             </div>
-                            <div class="window-button-wrapper">
+                            <div
+                                id="get-reviews-btn"
+                                class="window-button-wrapper"
+                            >
                                 <div
-                                    id="get-review"
+                                    id="get-reviews"
                                     class="window-button"
                                 ></div>
                                 <h2 class="window-button-title">리뷰 조회</h2>
@@ -92,6 +81,6 @@
         </main>
 
         <footer></footer>
-        <script src="/js/main.js"></script>
+        <script src="/js/script/main.windowbuttons.js"></script>
     </body>
 </html>

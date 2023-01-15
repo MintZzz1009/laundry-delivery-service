@@ -1,25 +1,10 @@
-/* google font */
-@import url('https://fonts.googleapis.com/css2?family=Jua&family=Stylish&display=swap');
-
-/* reset.css */
-@import url(reset.css);
-
-/* star-rating */
-@import url(star-rating.css);
-
-/* header, main */
-@import url(review-header.css);
-
-* {
-    font-family: 'Jua', sans-serif;
-}
-
 #review-post__form {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     width: 600px;
     height: calc(100vh - 70px);
+    padding-bottom: 70px;
     overflow-y: scroll;
     background-color: azure;
 }
@@ -87,5 +72,3 @@
 .btn-theme:hover {
     background-color: #03b586;
 }
-
-previewImg-box

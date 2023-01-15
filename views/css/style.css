@@ -1,0 +1,23 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Stylish&display=swap');
+
+/* reset.css */
+@import url(reset.css);
+
+/* header */
+@import url(header.css);
+
+/* main */
+@import url(main.css);
+
+/* star-rating */
+@import url(star-rating.css);
+
+/* review */
+@import url(review-get.css);
+@import url(review-post.css);
+
+*,
+html {
+    font-family: 'Jua', sans-serif;
+}

@@ -1,0 +1,69 @@
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 70px;
+    padding: 30px;
+    font-size: 30px;
+    background-color: #0ecd9a;
+}
+
+/* header buttons */
+.header-btn {
+    padding: 8px 12px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-btn:hover {
+    background-color: #a5ffe7;
+    cursor: pointer;
+}
+
+#btn-home {
+    font-size: 25px;
+    padding: 12px 12px;
+}
+
+.fa-sun {
+    font-size: 28px;
+    padding: 12px 12px;
+}
+
+#toggle-menu-bar {
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    background-color: azure;
+    border: 2px solid rgba(127, 255, 212, 0.7);
+    border-radius: 10px;
+    opacity: 0;
+}
+
+#toggle-menu-bar button {
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+    border: 0.5px solid gainsboro;
+    border-radius: 5px;
+}
+
+/* toggled */
+.toggled-on {
+    top: 100px !important;
+    opacity: 1 !important;
+    transition: opacity 0.1s linear, top 0.3s;
+}
+
+.toggled-off {
+    top: -50px !important;
+    opacity: 0 !important;
+    transition: opacity 0.1s linear, top 0.3s;
+}

@@ -1,17 +1,5 @@
-/* google font */
-@import url('https://fonts.googleapis.com/css2?family=Jua&family=Stylish&display=swap');
-
-/* reset.css */
-@import url(reset.css);
-
-/* header, main */
-@import url(review-header.css);
-
-* {
-    font-family: 'Jua', sans-serif;
-}
-
 #review__main {
+    padding-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,14 +43,17 @@
     background-color: silver;
 }
 
-.btn-theme {
+.btn-del {
     padding: 5px 10px;
+    border: 2px solid #0069d9;
     border-radius: 10px;
-    background-color: #26f1bb;
+    color: white;
+    background-color: #0069d9;
 }
 
-.btn-theme:hover {
-    background-color: #03b586;
+.btn-del:hover {
+    background-color: #00438b;
+    border: 2px solid #00438b;
 }
 
 #reviews-list {
@@ -72,8 +63,8 @@
     width: 700px;
     height: calc(100vh - 70px);
     overflow-y: scroll;
-    background-color: #8cb7ab;
-    padding: 50px;
+    background-color: #0069d9;
+    padding: 30px;
     margin-top: 20px;
     border-radius: 30px;
 }
@@ -83,7 +74,7 @@
 }
 
 #reviews-list > li {
-    padding: 30px;
+    padding: 20px;
     border: 2px solid rgb(202, 249, 249);
     border-radius: 30px;
     background-color: rgb(202, 249, 249);
@@ -92,7 +83,7 @@
 
 .review-get__list-row {
     display: flex;
-    padding: 10px;
+    padding: 5px;
 }
 
 .review-get__list-row:first-child {
@@ -101,7 +92,7 @@
 }
 
 .review-get__list-row:last-child {
-    margin-top: 10px;
+    margin-top: 2px;
 }
 
 .review-get__column {

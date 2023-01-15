@@ -1,81 +1,3 @@
-/* google font */
-@import url('https://fonts.googleapis.com/css2?family=Jua&family=Stylish&display=swap');
-
-/* reset.css */
-@import url(reset.css);
-
-*,
-html {
-    font-family: 'Jua', sans-serif;
-}
-
-header {
-    position: fixed;
-    z-index: 10;
-    width: 100%;
-    padding: 30px;
-}
-
-#main__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    font-size: 30px;
-    background-color: #0ecd9a;
-}
-
-.header-btn {
-    padding: 8px 12px;
-    border-radius: 50%;
-    transition: all 0.2s ease-in-out;
-}
-
-.header-btn:hover {
-    background-color: #a5ffe7;
-    cursor: pointer;
-}
-
-footer {
-    height: 0px;
-    background-color: gainsboro;
-}
-
-.header__buttons {
-    position: absolute;
-    top: -50px;
-    left: 30px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 20px;
-    background-color: azure;
-    border: 2px solid rgba(127, 255, 212, 0.7);
-    border-radius: 10px;
-    opacity: 0;
-}
-
-.toggled-on {
-    top: 100px;
-    opacity: 1;
-    transition: opacity 0.1s linear, top 0.3s;
-}
-
-.toggled-off {
-    top: -50px;
-    opacity: 0;
-    transition: opacity 0.1s linear, top 0.3s;
-}
-
-.header__buttons button {
-    font-size: 16px;
-    padding: 10px;
-    margin: 5px;
-    border: 0.5px solid gainsboro;
-    border-radius: 5px;
-}
-
-/* main */
 #main {
     display: flex;
     justify-content: center;
@@ -96,7 +18,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(202, 246, 246);
+    background-color: rgb(222, 252, 252);
     width: 100%;
     height: 100%;
     border-radius: 20px;
@@ -126,8 +48,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20vw;
-    height: 18vw;
+    width: 15vw;
+    height: 14vw;
     border: 2px solid transparent;
     border-radius: 10px;
     box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.7);
@@ -148,7 +70,7 @@ footer {
     background-image: url(https://previews.123rf.com/images/llesia/llesia2205/llesia220500020/185588234-%EA%B3%A0%EA%B0%9D-%EA%B2%80%ED%86%A0-%EC%B0%BD-%EA%B3%A0%EA%B0%9D-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B2%BD%ED%97%98-%EA%B0%9C%EB%85%90-3d-%EC%9B%B9-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8%EC%9E%85%EB%8B%88%EB%8B%A4-.jpg);
 }
 
-#get-review {
+#get-reviews {
     background-image: url(https://previews.123rf.com/images/senryu/senryu2105/senryu210500146/168800298-%EC%BD%94%EC%9D%B8%EC%84%B8%ED%83%81%EA%B8%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%97%AC%EC%84%B1%EC%9D%98-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8%EC%9E%85%EB%8B%88%EB%8B%A4-.jpg);
 }
 

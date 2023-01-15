@@ -79,6 +79,7 @@ router.get(
         // });
 
         res.render('review-post', {
+            title: '리뷰 작성하기',
             customer_nickname: '더러운빨래가너무많아요', // DB 적용
             store_nickname: '새하얗게빨아주는세탁소', // DB 적용
         });

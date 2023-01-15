@@ -1,0 +1,20 @@
+<header id="header">
+    <div class="header__column">
+        <% if (title === '코딩할 팔자') { %>
+        <i id="btn-menu" class="header-btn fa-solid fa-bars"></i>
+        <% } else { %>
+        <i id="btn-back" class="header-btn fa-solid fa-chevron-left"></i>
+        <% } %>
+    </div>
+    <div class="header__column"><h1><%= title %></h1></div>
+    <div class="header__column">
+        <% if (title !== '코딩할 팔자') { %>
+        <i id="btn-home" class="header-btn fa-solid fa-house"></i>
+        <% } else { %> <% if (mode === 'light') { %>
+        <i id="ligth-or-dark-mode" class="header-btn fa-solid fa-sun"></i>
+        <% } else { %>
+        <i id="ligth-or-dark-mode" class="header-btn fa-solid fa-moon"></i>
+        <% } %> <% } %>
+    </div>
+</header>
+<script src="/js/script/header.backspace.js"></script>
