@@ -1,77 +1,9 @@
 const express = require('express');
-const router = express.Router();
-
 const jwt = require('jsonwebtoken');
 
-const { User, Store } = require('../models');
-const { Op } = require('sequelize');
-const { token } = require('morgan');
-const JWT_SECRET_KEY = process.env.JWT_SECRET;
-
-let tokenObject = {
-    // key(= refreshToken): value(= accessToken )
-};
-router.post('/user', async (req, res, next) => {
-    const { nickname, password } = req.body;
-    const loginType = 'user';
-    res.cookie.theme = 'dark';
-    const theme = res.cookie.theme;
-
-    console.log(
-        '@@@@@@@@@@@@@@@@',
-        `nickname: ${nickname}`,
-        `password: ${password}`,
-        `loginType: ${loginType}`,
-        `dark_mode: ${theme}`
-    );
-    try {
-        const userId = await User.findOne({
-            where: { [Op.and]: [{ nickname }, { password }] },
-        });
-        if (userId === null) {
-            return res.json({ msg: 'fail' });
-        }
-        // 토큰(access, refresh) 발급
-        const accessTokenPayloadObject = { nickname, loginType, theme };
-        const tokens = issueTokens(accessTokenPayloadObject);
-        res.cookie('accessToken', tokens.accessToken); // Access Token을 Cookie에 전달한다.
-        res.cookie('refreshToken', tokens.refreshToken); // Refresh Token을 Cookie에 전달한다.
-        return res.json({ msg: 'success' });
-    } catch (err) {
-        console.error(err);
-        next(err);
-    }
-});
-
-router.post('/store', async (req, res, next) => {
-    const { store_name, password } = req.body;
-    const loginType = 'store';
-    res.cookie.theme = 'dark';
-    const theme = res.cookie.theme;
-    console.log(`@@@@@@@ store_name: ${store_name}, password: ${password}`);
-    try {
-        const storeId = await Store.findOne({
-            where: { [Op.and]: [{ store_name }, { password }] },
-        });
-        if (storeId === null) {
-            return res.json({ msg: 'fail' });
-        }
-
-        // 토큰(access, refresh) 발급
-        const accessTokenPayloadObject = { store_name, loginType, theme };
-        const tokens = issueTokens(accessTokenPayloadObject);
-        console.log(tokenObject);
-        res.cookie('accessToken', tokens.accessToken); // Access Token을 Cookie에 전달한다.
-        res.cookie('refreshToken', tokens.refreshToken); // Refresh Token을 Cookie에 전달한다.
-        return res.json({ msg: 'success' });
-    } catch (err) {
-        console.error(err);
-        next(err);
-    }
-});
-
+// 페이지 이동 후 GET 요청시 실행되는 미들웨어
 // Refresh Token과 Access Token을 검증하는 API
-async (req, res, next) => {
+module.exports = async (req, res, next) => {
     const accessToken = req.cookies.accessToken;
     const refreshToken = req.cookies.refreshToken;
 
@@ -119,6 +51,7 @@ async (req, res, next) => {
         const newAccessToken = createAccessToken(accessTokenPayloadData);
         res.cookie('accessToken', newAccessToken);
         return res.status(201).json({
+            result: 'success',
             message: 'Access Token을 새롭게 발급하였습니다.',
             accessTokenPayloadData,
         });
@@ -127,6 +60,7 @@ async (req, res, next) => {
     // accessToken 있을 경우
     const accessTokenPayloadData = getAccessTokenPayload(accessToken);
     return res.status(200).json({
+        result: 'success',
         message: `accessToken 인증 성공`,
         accessTokenPayloadData,
     });
@@ -193,5 +127,3 @@ function getAccessTokenPayload(accessToken) {
         return null;
     }
 }
-
-module.exports = router;

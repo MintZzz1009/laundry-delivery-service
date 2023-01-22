@@ -18,13 +18,6 @@ const upload = multer({
     }),
 });
 
-try {
-    fs.readdirSync('reviewImages');
-} catch (error) {
-    console.error('not exist directory.');
-    fs.mkdirSync('reviewImages');
-}
-
 // 게시글 생성 및 DB 등록 API -> URL: /UserId/review 로 수정필요
 router.post(
     '/userId/laundryId/review', // '/:userId/:laundryId/review'

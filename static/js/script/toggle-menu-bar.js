@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
     signUpBtn.addEventListener('click', handleSignUp);
 
     function handleSignUp() {
-        window.location.href = '/api/signup';
+        window.location.href = '/api/signup/user';
     }
 
     // 로그인 버튼 클릭시
@@ -26,4 +26,8 @@ window.addEventListener('DOMContentLoaded', () => {
     function handleLogIn() {
         window.location.href = '/api/login';
     }
+
+    // 마이페이지 버튼 클릭시
+
+    // 로그아웃 버튼 클릭시
 });

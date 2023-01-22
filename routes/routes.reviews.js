@@ -24,6 +24,7 @@ router.get('/storeId/reviewId', async (req, res) => {
     //     });
     res.render('reviews', {
         title: '리뷰 조회하기',
+        login_type: '사장님',
         store_nickname: '현빈정도는 뺨 10대 치는 장빈 세탁소',
         review_userNickname: '손님닉네임은 수염민희찬님은미남',
         review_createdAt: '2022-12-27 14:00', // DB 유

@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs');
 
-const { sequelize } = require('./models');  // index.js 생략
+const { sequelize } = require('./models'); // index.js 생략
 
 // Template
 const ejs = require('ejs');
@@ -19,23 +19,32 @@ const form_data = multer();
 
 // body-parser
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
-// Router
-const reviewPostRouter = require('./routes/routes.review.post');
-const reviewsRouter = require('./routes/routes.reviews');
-const signUpRouter = require('./routes/routes.signup');
-const logInRouter = require('./routes/routes.login');
+// reviewImages Dir 생성
+try {
+    fs.readdirSync('reviewImages');
+} catch (error) {
+    console.error('not exist directory.');
+    fs.mkdirSync('reviewImages');
+}
+
+const router = require('./routes');
+const expressRender = require('./render');
+const error = require('./error');
 
 // env setting
 dotenv.config();
 
 const app = express();
-app.set('port' = process.env.PORT || 3001)
+app.use(cookieParser());
+app.set('port', process.env.PORT || 3001);
 // ejs setting
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
 //sequelize
+// 서버 실행시 MySQL과 연동되도록 | force: true 일 경우 서버 실행시마다 테이블 재생성  => 테이블 잘못 만들었을 경우, true로 바꿔서 실행하면 된다.
 sequelize
     .sync({ force: false })
     .then(() => {
@@ -44,43 +53,18 @@ sequelize
     .catch((err) => {
         console.error(err);
     });
-l;
 
 // 미들웨어
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'views')));
-//app.use(express.static('./views'));
+app.use(express.static('static'));
+// app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
-// 라우터
-app.use('/api', [reviewPostRouter, reviewsRouter, signUpRouter, logInRouter]);
-
-app.use((req, res, next) => {
-    const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
-    error.status = 404;
-    next(error);
-});
-
-app.use((err, req, res, next) => {
-    res.locals.message = err.message;
-    res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
-    res.status(err.status || 500);
-    res.render('error');
-});
-
-app.get('/', (req, res) => {
-    console.log('app.js 실행 =>ㄴ app.get("/")');
-    // jwt 토큰 검사 -> login 값 변경
-    res.render('main', {
-        login: true,
-        title: '코딩할 팔자',
-        mode: 'light',
-    });
-    // res.status(200).send('review test를 위한 임시 서버');
-});
-
+app.use('/api', router);
+app.use('/', expressRender);
+app.use(error);
 
 app.listen(app.get('port'), () => {
-    console.log(app.get('port'), '번 포트에서 대기 중')
-})
+    console.log(app.get('port'), '번 포트에서 대기 중');
+});

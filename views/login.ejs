@@ -39,7 +39,24 @@
         >
             <form class="validation-form" novalidate>
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="radio-check mb-3" style="padding: 0px 15px">
+                        <input
+                            type="radio"
+                            name="login-type"
+                            id="user"
+                            value="user"
+                            checked
+                            style="margin-right: 5px"
+                        />손님
+                        <input
+                            type="radio"
+                            name="login-type"
+                            id="store"
+                            value="store"
+                            style="margin-right: 5px; margin-left: 15px"
+                        />사장님
+                    </div>
+                    <div class="col-md-12 mb-3">
                         <label for="login__input-id">아이디</label>
                         <input
                             type="text"
@@ -53,14 +70,15 @@
                             아이디를 입력해주세요
                         </div>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
                         <label for="login__input-pw">비밀번호</label>
                         <input
-                            type="text"
+                            type="password"
                             class="form-control"
                             id="login__input-pw"
                             placeholder=""
                             value=""
+                            autocomplete="on"
                             required
                         />
                         <div class="invalid-feedback">
@@ -72,6 +90,7 @@
                 <button
                     id="submit-login-form"
                     class="btn btn-primary btn-lg btn-block"
+                    type="button"
                 >
                     로그인
                 </button>

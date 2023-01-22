@@ -1,0 +1,28 @@
+.signup-container > div.input-form.col-md-12.mx-auto {
+    width: 700px;
+    height: 100vh;
+    padding: 200px 100px;
+    margin: auto;
+}
+
+.form-check-label {
+    padding: 10px 0px;
+}
+
+#sign-up-for-who {
+    font-size: 20px;
+}
+
+.form-check.form-switch {
+    position: relative;
+    padding: 10px;
+    margin-bottom: 30px;
+    background: rgba(127, 255, 212, 0.6);
+    border-radius: 5px;
+}
+
+.form-check-input {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+}

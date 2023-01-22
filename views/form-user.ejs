@@ -1,0 +1,86 @@
+<div class="container signup-container">
+    <div class="input-form col-md-12 mx-auto">
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="flexSwitchCheckDefault"
+                ><span id="sign-up-for-who">'손님' </span>으로 회원가입</label
+            >
+
+            <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+            />
+        </div>
+        <form class="validation-form" novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="userNickname">아이디 (닉네임)</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="userNickname"
+                        placeholder=""
+                        value=""
+                        required
+                    />
+                    <div class="invalid-feedback">닉네임을 입력해주세요.</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="inputPassword">비밀번호</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="inputPassword"
+                        placeholder="공백이나 쉼표없이 4 ~ 20 글자로 입력해주세요"
+                        autocomplete="on"
+                    />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputPasswordConfirm">비밀번호 확인</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="inputPasswordConfirm"
+                        autocomplete="on"
+                    />
+                </div>
+
+                <div class="mb-3">
+                    <label for="userEmail">이메일</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="userEmail"
+                        placeholder="you@example.com"
+                        required
+                    />
+                    <div class="invalid-feedback">이메일을 입력해주세요.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="userPhone"
+                        >전화번호 ( '-' 없이 입력해주세요)</label
+                    >
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="userPhone"
+                        placeholder="010xxxxxxxx"
+                        required
+                    />
+                    <div class="invalid-feedback">전화번호를 입력해주세요.</div>
+                </div>
+
+                <div class="mb-4"></div>
+                <button
+                    class="btn btn-primary btn-lg btn-block"
+                    type="button"
+                    id="submit-user"
+                >
+                    손님으로 가입하기
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
