@@ -1,10 +1,70 @@
 <div class="toggled-off" id="toggle-menu-bar">
-    <% if (login) { %>
-    <button id="login-btn">로그인</button>
-    <button id="signup-btn">회원가입</button>
-    <% } else { %>
+    <% if (loginType) { %>
     <button id="mypage-btn">마이페이지</button>
     <button id="logout-btn">로그아웃</button>
+    <script>
+        // 마이페이지 버튼 클릭시
+        const myPageBtn = document.querySelector('#mypage-btn');
+        if (myPageBtn) {
+            myPageBtn.addEventListener('click', handleMyPage);
+        }
+        function handleMyPage() {
+            window.location.href = '/api/mypage';
+        }
+
+        // 로그아웃 버튼 클릭시
+        const logOutBtn = document.querySelector('#logout-btn');
+        if (logOutBtn) {
+            logOutBtn.addEventListener('click', handleLogOut);
+        }
+        function handleLogOut() {
+            console.log('handleLogOut() 실행');
+            $.ajax({
+                type: 'GET',
+                url: '/api/logout',
+                data: {},
+                success: function (response) {
+                    alert(response['message']);
+                    location.href = '/api/main';
+                },
+            });
+        }
+    </script>
+    <% } else { %>
+    <button id="login-btn">로그인</button>
+    <button id="signup-btn">회원가입</button>
+    <script>
+        // 회원가입 버튼 클릭시
+        const signUpBtn = document.querySelector('#signup-btn');
+        if (signUpBtn) {
+            signUpBtn.addEventListener('click', handleSignUp);
+        }
+        function handleSignUp() {
+            window.location.href = '/api/signup/user';
+        }
+
+        // 로그인 버튼 클릭시
+        const logInBtn = document.querySelector('#login-btn');
+        if (logInBtn) {
+            logInBtn.addEventListener('click', handleLogIn);
+        }
+        function handleLogIn() {
+            window.location.href = '/api/login';
+        }
+    </script>
     <% } %>
 </div>
-<script src="/js/script/toggle-menu-bar.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        console.log('toggle-menu-bar.js 실행');
+        // 헤더 메뉴버튼 클릭시 - 토글 기능
+        const toggleMenuBtn = document.querySelector('#btn-menu');
+        toggleMenuBtn.addEventListener('click', toggleOn);
+
+        function toggleOn() {
+            const toggleBox = document.querySelector('#toggle-menu-bar');
+            toggleBox.classList.toggle('toggled-off');
+            toggleBox.classList.toggle('toggled-on');
+        }
+    });
+</script>

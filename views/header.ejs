@@ -10,6 +10,27 @@
     <div class="header__column">
         <% if (title !== '코딩할 팔자') { %>
         <i id="btn-home" class="header-btn fa-solid fa-house"></i>
+        <script>
+            // '🏠' 클릭시, 메인
+            const goToHomeBtn = document.querySelector('#btn-home');
+            goToHomeBtn.addEventListener('click', goToHome);
+            function goToHome() {
+                if (hasToken) {
+                    window.location.href = `/api/main`;
+                } else {
+                    alert('토큰이 만료되어 다시 로그인해주세요');
+                    window.location.href = `/api/login`;
+                }
+            }
+
+            // '<' 클릭시, 세탁물 상태조회(개인)
+            const goToBackBtn = document.querySelector('#btn-back');
+            goToBackBtn.addEventListener('click', backToHistory);
+
+            function backToHistory() {
+                window.history.back();
+            }
+        </script>
         <% } else { %> <% if (mode === 'light') { %>
         <i id="ligth-or-dark-mode" class="header-btn fa-solid fa-sun"></i>
         <% } else { %>
@@ -17,4 +38,13 @@
         <% } %> <% } %>
     </div>
 </header>
-<script src="/js/script/header.backspace.js"></script>
+<script>
+    function hasToken() {
+        const isAccessToken = document.cookie.includes('accessToken');
+        if (isAccessToken) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>

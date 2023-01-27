@@ -4,7 +4,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 // '<' 클릭시, 세탁물 상태조회(개인)
 const goToBackBtn = document.querySelector('#btn-back');
-goToBackBtn.addEventListener('click', backToHistory);
+if (goToBackBtn) {
+    goToBackBtn.addEventListener('click', backToHistory);
+}
 
 function backToHistory() {
     window.history.back();
@@ -12,7 +14,9 @@ function backToHistory() {
 
 // '🏠' 클릭시, 메인
 const goToHomeBtn = document.querySelector('#btn-home');
-goToHomeBtn.addEventListener('click', goToHome);
+if (goToHomeBtn) {
+    goToHomeBtn.addEventListener('click', goToHome);
+}
 
 function goToHome() {
     if (hasToken) {
