@@ -36,7 +36,7 @@ function verifyTokenAndMovePage(URL) {
             location.href = URL;
         },
         error: function (response) {
-            console.log(response.errorMessage);
+            // console.log(response.errorMessage);
             alert('로그인 페이지로 이동합니다.');
             location.href = '/api/login';
         },

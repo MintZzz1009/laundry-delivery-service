@@ -42,7 +42,7 @@ function handleStoreLogin() {
                 // 로그인
                 console.log('로그인 성공!');
                 alert('로그인 성공!');
-                location.href = '/api/main';
+                location.href = '/';
             }
         },
     });
@@ -73,7 +73,7 @@ function handleUserLogin() {
                 // 로그인
                 console.log('로그인 성공!');
                 alert('로그인 성공!');
-                location.href = '/api/main';
+                location.href = '/';
             }
         },
     });

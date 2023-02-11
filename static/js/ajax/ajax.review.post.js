@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function handleFileChange() {
         const selectedFile = fileInput.files[0];
+        console.log(selectedFile);
         const fileReader = new FileReader();
         fileReader.readAsDataURL(selectedFile);
         fileReader.onload = function () {
@@ -104,7 +105,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             processData: false,
             contentType: false,
             success: function (response) {
-                console.log(response);
+                console.log(response['data']);
                 alert(response['msg']);
                 window.location.reload();
             },

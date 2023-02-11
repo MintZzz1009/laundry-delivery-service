@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/api/main', (req, res, next) => {
+router.get('/', (req, res, next) => {
     console.log('app.js 실행 => app.get("/")');
     // jwt 토큰 검사 -> login 값 변경
     const loginType = req.cookies.loginType;
@@ -26,9 +26,9 @@ router.get('/api/login', (req, res, next) => {
     res.render('login', { title: '로그인' });
 });
 
-router.get('/api/apply', async (req, res, next) => {
-    res.render('apply', { title: '세탁 신청하기' });
-});
+// router.get('/api/apply', async (req, res, next) => {
+//     res.render('apply', { title: '세탁 신청하기' });
+// });
 
 router.get('/api/orders', async (req, res, next) => {
     res.render('orders', { title: '세탁물 신청 목록' });

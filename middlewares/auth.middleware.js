@@ -87,7 +87,7 @@ function createAccessToken(id) {
         { id }, // JWT 데이터
         JWT_SECRET_KEY, // 비밀키
         {
-            expiresIn: '10s',
+            expiresIn: '15m',
         }
     ); // Access Token이 7초 뒤에 만료되도록 설정합니다.
 
@@ -100,7 +100,7 @@ function createRefreshToken() {
         {}, // JWT 데이터
         JWT_SECRET_KEY, // 비밀키
         {
-            expiresIn: '30s',
+            expiresIn: '1h',
         }
     ); // Refresh Token이 3분 뒤에 만료되도록 설정합니다.
 

@@ -35,6 +35,8 @@ router.post('/user', async (req, res, next) => {
         res.cookie('accessToken', tokens.accessToken); // Access Token을 Cookie에 전달한다.
         res.cookie('refreshToken', tokens.refreshToken); // Refresh Token을 Cookie에 전달한다.
         res.cookie('loginType', 'user');
+        // cookie에 닉네임 저장
+        res.cookie('nickname', nickname);
         return res.json({ msg: 'success' });
     } catch (err) {
         console.error(err);
@@ -60,6 +62,8 @@ router.post('/store', async (req, res, next) => {
         res.cookie('accessToken', tokens.accessToken); // Access Token을 Cookie에 전달한다.
         res.cookie('refreshToken', tokens.refreshToken); // Refresh Token을 Cookie에 전달한다.
         res.cookie('loginType', 'store');
+        // cookie에 닉네임 저장
+        res.cookie('nickname', nickname);
         return res.json({ msg: 'success' });
     } catch (err) {
         console.error(err);

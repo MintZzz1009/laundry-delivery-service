@@ -9,6 +9,7 @@ const signUpRouter = require('./routes.signup');
 const logInRouter = require('./routes.login');
 const myPageRouter = require('./routes.mypage');
 const logOutRouter = require('./routes.logout');
+const applyRouter = require('./routes.apply');
 const testRouter = require('./test');
 
 const authMiddleware = require('../middlewares/auth.middleware');
@@ -21,6 +22,7 @@ router.use([
     myPageRouter,
     logInRouter,
     logOutRouter,
+    applyRouter,
 ]);
 
 router.use('/main', mainPostRouter);

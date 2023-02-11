@@ -7,8 +7,9 @@ module.exports = class Order extends Sequelize.Model {
             {
                 status: {
                     type: Sequelize.INTEGER,
-                    allowNull: false,
+                    allowNull: true,
                     unique: false,
+                    defaultValue: 0,
                 },
                 location: {
                     type: Sequelize.STRING(255),
@@ -16,8 +17,11 @@ module.exports = class Order extends Sequelize.Model {
                 },
                 image_path: {
                     type: Sequelize.STRING(255),
-                    allowNull: false,
-                    unique: true,
+                    allowNull: true,
+                },
+                user_req: {
+                    type: Sequelize.STRING(255),
+                    allowNull: true,
                 },
                 // createdAt: {
                 //     type: Sequelize.DATE,

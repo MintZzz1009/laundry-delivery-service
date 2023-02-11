@@ -16,18 +16,19 @@ const upload = multer({
             cb(null, new Date().valueOf() + path.extname(file.originalname));
         },
     }),
+    limits: { fileSize: 5 * 1024 * 1024 },
 });
 
 // 게시글 생성 및 DB 등록 API -> URL: /UserId/review 로 수정필요
 router.post(
-    '/user/review', // '/:userId/:laundryId/review'
+    '/userId/laundryId/review', // '/:userId/:laundryId/review'
     upload.single('reviewLaundryImage'),
     async (req, res, next) => {
         const reviewUserId = req.params.userId;
         const reviewLaundryId = req.params.laundryId;
         const { rating, reviewStar, reviewLaundryCategory, reviewContent } =
             req.body; // text upload
-        // const reviewLaundryImage = req.files; // image upload
+        const reviewLaundryImage = req.file; // image upload
         const reviewLaundryImagePath = req.file.path;
         console.log(reviewLaundryImagePath);
         console.log(rating, reviewStar, reviewLaundryCategory, reviewContent);

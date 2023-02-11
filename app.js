@@ -38,6 +38,15 @@ dotenv.config();
 
 const app = express();
 app.use(cookieParser());
+app.use(express.json({ limit: 5000000 })); // limit: 5MB
+app.use(
+    express.urlencoded({
+        limit: 5000000,
+        extended: false,
+        parameterLimit: 50000,
+    })
+);
+
 app.set('port', process.env.PORT || 3001);
 // ejs setting
 app.set('view engine', 'ejs');
@@ -58,8 +67,8 @@ sequelize
 app.use(morgan('dev'));
 app.use(express.static('static'));
 // app.use(express.static(path.join(__dirname, 'static')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.json({}));
+// app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', router);
 app.use('/', expressRender);

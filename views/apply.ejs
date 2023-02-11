@@ -28,6 +28,118 @@
     </head>
     <body>
         <%- include('header') %>
-        <h1>apply form 가 나올 예정입니다.</h1>
+        <div style="padding: 100px">
+            <form id="apply-form" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>세탁 신청 양식</legend>
+                    <div>
+                        <div id="apply__nickname">닉네임: <%= unickname %></div>
+                    </div>
+                    <div>
+                        <div id="apply__phone">전화번호: <%= uphone %></div>
+                    </div>
+                    <div>
+                        <label for="apply__address">주소입력</label>
+                        <input id="apply__address" type="text" />
+                    </div>
+                    <div>
+                        <label for="apply__laundry-info">세탁물 정보</label>
+                        <input id="apply__laundry-info" type="text" />
+                    </div>
+                    <div>
+                        <div class="review-post__row">
+                            <div class="mb-3">
+                                <label for="apply__image" class="form-label"
+                                    >사진첨부</label
+                                >
+                                <input
+                                    class="form-control"
+                                    type="file"
+                                    id="apply__image"
+                                    accept="image/*"
+                                />
+                                <div id="previewImg-box">
+                                    <img
+                                        id="apply__previewImg"
+                                        max-height="100"
+                                        width="100"
+                                        alt="이미지 영역"
+                                    />
+                                    <button type="button" id="apply__deleteImg">
+                                        이미지 삭제
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="apply__req">세탁 요청사항</label>
+                        <input id="apply__req" type="text" />
+                    </div>
+                    <div>
+                        <button id="apply__submit" type="button">
+                            세탁신청
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <script>
+            const address = document.querySelector('#apply__address');
+            const laundryInfo = document.querySelector('#apply__laundry-info');
+            const fileInput = document.querySelector('#apply__image');
+            const req = document.querySelector('#apply__req');
+
+            fileInput.addEventListener('change', handleFileChange);
+            function handleFileChange() {
+                const selectedFile = fileInput.files[0];
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(selectedFile);
+                fileReader.onload = function () {
+                    const previewImg =
+                        document.querySelector('#apply__previewImg');
+                    if (!previewImg.src) {
+                        // FileReader 객체에서도 바꿔야 하는데.
+                        return (previewImg.src = fileReader.result);
+                    } else {
+                        if (confirm('이미지를 바꾸시겠습니까?') === true) {
+                            return (previewImg.src = fileReader.result);
+                        }
+                    }
+                };
+            }
+            // 삭제 - 이미지 파일, 미리보기
+            const deleteImg = document.querySelector('#apply__deleteImg');
+            deleteImg.addEventListener('click', handleDeleteImg);
+            function handleDeleteImg() {
+                const previewImg = document.querySelector('#apply__previewImg');
+                previewImg.removeAttribute('src');
+                fileInput.value = null; // 여기는 null로 해도 상관이 없다.
+            }
+
+            const applySubmitBtn = document.querySelector('#apply__submit');
+            applySubmitBtn.addEventListener('click', handleSubmitApplyForm);
+            function handleSubmitApplyForm() {
+                console.log('hello');
+                const applyForm = document.querySelector('#apply-form');
+                const formData = new FormData(applyForm);
+                formData.append('applyAddress', address.value);
+                formData.append('applylaundryInfo', laundryInfo.value);
+                formData.append('applyImage', fileInput.files[0]);
+                formData.append('applyReq', req.value);
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/apply',
+                    data: formData,
+                    async: false,
+                    processData: false, // 파일 전송 시에 사용
+                    contentType: false, // 파일 전송 시에 사용
+                    success: function (response) {
+                        alert(response['msg']);
+                    },
+                    error: function () {},
+                });
+            }
+        </script>
     </body>
 </html>
